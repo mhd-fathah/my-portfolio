@@ -1,7 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './partials/navbar/navbar.component';
-import { FooterComponent } from './partials/footer/footer.component';
 
 declare var Revealator: any
 
@@ -17,8 +16,11 @@ export class AppComponent implements AfterViewInit {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd) {
         setTimeout(()=>{
+          const revealator = (window as any).Revealator;
           if(Revealator && typeof Revealator.refresh === 'function'){
             Revealator.refresh();
+          }else{
+            console.warn('Revealator is not ready')
           }
         },300)
       }
