@@ -14,19 +14,19 @@
                     <p class="open-sans-font mb-3">Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
                     <p class="open-sans-font custom-span-contact position-relative">
                         <i class="fa fa-envelope-open position-absolute"></i>
-                        <span class="d-block">mail me</span>steve&#64;mail.com
+                        <span class="d-block">mail me</span>muhammedfathahofficial&#64;gmail.com
                     </p>
                     <p class="open-sans-font custom-span-contact position-relative">
                         <i class="fa fa-phone-square position-absolute"></i>
-                        <span class="d-block">call me</span>+216 21 184 010
+                        <span class="d-block">call me</span>+91 7034061007
                     </p>
                     <ul class="social list-unstyled pt-1 mb-5">
-                        <li class="facebook"><a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
+                        <!-- <li class="facebook"><a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
+                        </li> -->
                         <li class="twitter"><a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
                         </li>
-                        <li class="youtube"><a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
-                        </li>
+                        <!-- <li class="youtube"><a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
+                        </li> -->
                         <li class="dribbble"><a title="Dribbble" href="#"><i class="fa fa-dribbble"></i></a>
                         </li>
                     </ul>
@@ -34,22 +34,22 @@
                 <!-- Left Side Ends -->
                 <!-- Contact Form Starts -->
                 <div class="col-12 col-lg-8">
-                    <form class="contactform" method="post" action="php/process-form.php">
+                    <form class="contactform" #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm)" >
                         <div class="contactform">
                             <div class="row">
                                 <div class="col-12 col-md-4">
-                                    <input type="text" name="name" placeholder="YOUR NAME">
+                                    <input type="text" name="name" ngModel placeholder="YOUR NAME">
                                 </div>
                                 <div class="col-12 col-md-4">
-                                    <input type="email" name="email" placeholder="YOUR EMAIL">
+                                    <input type="email" name="email" ngModel placeholder="YOUR EMAIL">
                                 </div>
                                 <div class="col-12 col-md-4">
-                                    <input type="text" name="subject" placeholder="YOUR SUBJECT">
+                                    <input type="text" name="title" ngModel placeholder="YOUR SUBJECT">
                                 </div>
                                 <div class="col-12">
-                                    <textarea name="message" placeholder="YOUR MESSAGE"></textarea>
-                                    <button type="submit" class="button">
-                                        <span class="button-text">Send Message</span>
+                                    <textarea name="message" ngModel placeholder="YOUR MESSAGE"></textarea>
+                                    <button [disabled]="isSubmitting" type="submit" class="button">
+                                        <span class="button-text">{{isSubmitting ? 'Sending Message...' : 'Send Message'}}</span>
                                         <span class="button-icon fa fa-send"></span>
                                     </button>
                                 </div>

@@ -1,0 +1,173 @@
+.grid-wrap {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    position: relative;
+}
+
+.grid-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    animation: shimmer 3s infinite;
+}
+
+.grid-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    animation: shimmer 3s infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes shimmer {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0;
+    list-style: none;
+} */
+
+.grid li {
+    position: relative;
+    perspective: 1000px;
+    opacity: 0;
+    transform-origin: center;
+    animation: fadeReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Elegant staggered animations */
+.grid li:nth-child(1) { animation-delay: 0.2s; }
+.grid li:nth-child(2) { animation-delay: 0.4s; }
+.grid li:nth-child(3) { animation-delay: 0.6s; }
+.grid li:nth-child(4) { animation-delay: 0.8s; }
+.grid li:nth-child(5) { animation-delay: 1.0s; }
+.grid li:nth-child(6) { animation-delay: 1.2s; }
+.grid li:nth-child(7) { animation-delay: 1.4s; }
+.grid li:nth-child(8) { animation-delay: 1.6s; }
+.grid li:nth-child(9) { animation-delay: 1.8s; }
+
+.grid figure {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    background: #111;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Gold border animation on hover */
+.grid figure::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    border: 1px solid rgba(212, 175, 55, 0);
+    z-index: 1;
+    transform: scale(1.1);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.grid figure img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    filter: grayscale(20%) brightness(0.9);
+}
+
+.grid figure div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.grid figure div span {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 1.5px;
+    color: #d4af37;
+    text-shadow: 0 0 2px rgba(212, 175, 55, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    transition-delay: 0.1s;
+}
+
+/* Luxurious hover effects */
+.grid li:hover figure::before {
+    transform: scale(1);
+    opacity: 1;
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+.grid li:hover figure img {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(1.1);
+}
+
+.grid li:hover figure div {
+    transform: translateY(0);
+}
+
+.grid li:hover figure div span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Luxury animation keyframes */
+@keyframes fadeReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive adjustments with elegant spacing */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
