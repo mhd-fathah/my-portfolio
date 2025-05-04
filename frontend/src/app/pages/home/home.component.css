@@ -15,5 +15,9 @@
     .button {
       margin-top: 15px;
     }
+    .summary{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
   }
   
