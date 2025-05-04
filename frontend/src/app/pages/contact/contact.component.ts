@@ -3,12 +3,13 @@ import { environment } from '../../../environments/environment';
 import {FormsModule} from '@angular/forms'
 import emailjs,{EmailJSResponseStatus} from 'emailjs-com'
 import { ToastService } from '../../toast.service';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
@@ -19,6 +20,7 @@ export class ContactComponent {
   constructor(private toast: ToastService) {}
 
   sendEmail(form: any){
+    if(form.invalid) return
     if(this.isSubmitting) return
 
     this.isSubmitting = true;

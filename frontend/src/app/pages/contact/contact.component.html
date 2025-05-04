@@ -23,44 +23,73 @@
                     <ul class="social list-unstyled pt-1 mb-5">
                         <!-- <li class="facebook"><a title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
                         </li> -->
-                        <li class="twitter"><a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
+                        <li class="github"><a title="Github" href="https://github.com/mhd-fathah"><i class="fa fa-github"></i></a>
                         </li>
-                        <li class="linkedin"><a title="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                        <li class="linkedin"><a title="Linkedin" href="https://www.linkedin.com/in/muhammed-fathah"><i class="fa fa-linkedin"></i></a>
                         </li>
                         <!-- <li class="youtube"><a title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
                         </li> -->
-                        <li class="dribbble"><a title="Dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                        <li class="instagram"><a title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
                         </li>
                     </ul>
                 </div>
                 <!-- Left Side Ends -->
                 <!-- Contact Form Starts -->
                 <div class="col-12 col-lg-8">
-                    <form class="contactform" #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm)" >
+                    <form class="contactform" #contactForm="ngForm" (ngSubmit)="sendEmail(contactForm)">
                         <div class="contactform">
-                            <div class="row">
-                                <div class="col-12 col-md-4">
-                                    <input type="text" name="name" ngModel placeholder="YOUR NAME" required>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <input type="email" name="email" ngModel placeholder="YOUR EMAIL" required>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <input type="text" name="title" ngModel placeholder="YOUR SUBJECT" required>
-                                </div>
-                                <div class="col-12">
-                                    <textarea name="message" ngModel placeholder="YOUR MESSAGE"></textarea>
-                                    <button [disabled]="isSubmitting" type="submit" class="button">
-                                        <span class="button-text">{{isSubmitting ? 'Sending Message...' : 'Send Message'}}</span>
-                                        <span class="button-icon fa fa-send"></span>
-                                    </button>
-                                </div>
-                                <div class="col-12 form-message">
-                                    <span class="output_message text-center font-weight-600 text-uppercase"></span>
-                                </div>
+                          <div class="row">
+                      
+                            <!-- Name Field -->
+                            <div class="col-12 col-md-4">
+                              <input type="text" name="name" ngModel required minlength="3" #name="ngModel" placeholder="YOUR NAME">
+                              <div *ngIf="name.invalid && name.touched" class="text-danger small">
+                                <span *ngIf="name.errors?.['required']">Name is required</span>
+                                <span *ngIf="name.errors?.['minlength']">Minimum 3 characters</span>
+                              </div>
                             </div>
+                      
+                            <!-- Email Field -->
+                            <div class="col-12 col-md-4">
+                              <input type="email" name="email" ngModel required email #email="ngModel" placeholder="YOUR EMAIL">
+                              <div *ngIf="email.invalid && email.touched" class="text-danger small">
+                                <div *ngIf="email.errors?.['required']">Email is required</div>
+                                <div *ngIf="email.errors?.['email']">Enter a valid email</div>
+                              </div>
+                            </div>
+                      
+                            <!-- Subject Field -->
+                            <div class="col-12 col-md-4">
+                              <input type="text" name="title" ngModel required #title="ngModel" placeholder="YOUR SUBJECT">
+                              <div *ngIf="title.invalid && title.touched" class="text-danger small">
+                                <div *ngIf="title.errors?.['required']">Subject is required</div>
+                              </div>
+                            </div>
+                      
+                            <!-- Message Field -->
+                            <div class="col-12">
+                              <textarea name="message" ngModel required minlength="10" #message="ngModel" placeholder="YOUR MESSAGE"></textarea>
+                              <div *ngIf="message.invalid && message.touched" class="text-danger small">
+                                <div *ngIf="message.errors?.['required']">Message is required</div>
+                                <div *ngIf="message.errors?.['minlength']">Minimum 10 characters</div>
+                              </div>
+                      
+                              <!-- Submit Button -->
+                              <button [disabled]="contactForm.invalid || isSubmitting" type="submit" class="button">
+                                <span class="button-text">{{isSubmitting ? 'Sending Message...' : 'Send Message'}}</span>
+                                <span class="button-icon fa fa-send"></span>
+                              </button>
+                            </div>
+                      
+                            <!-- Output Message -->
+                            <div class="col-12 form-message">
+                              <span class="output_message text-center font-weight-600 text-uppercase"></span>
+                            </div>
+                      
+                          </div>
                         </div>
-                    </form>
+                      </form>
+                      
                 </div>
                 <!-- Contact Form Ends -->
             </div>
