@@ -1,0 +1,20 @@
+@media (max-width: 576px) {
+    .value {
+      display: block;
+      font-size: 14px;       
+      word-break: break-word;  
+      overflow-wrap: break-word;
+      white-space: normal;     
+    }
+  
+    .title {
+      font-size: 14px;         
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+  
+    li {
+      padding: 5px 0;
+    }
+  }
+  

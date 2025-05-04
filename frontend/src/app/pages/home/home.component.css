@@ -1,0 +1,19 @@
+@media (max-width: 767px) {
+    .main-container {
+      padding: 15px;
+    }
+  
+    .home-details h1 {
+      font-size: 1.8rem;
+    }
+  
+    .home-details p {
+      font-size: 1rem;
+      text-align: center;
+    }
+  
+    .button {
+      margin-top: 15px;
+    }
+  }
+  
